@@ -1,0 +1,27 @@
+id: s2q-rule-001
+name: "Migrate Spring Boot Application to Quarkus"
+description: "Replace @SpringBootApplication with Quarkus annotations."
+tags: ["springboot", "quarkus", "migration"]
+scope: ["java"]
+sourceTechnology: "springboot"
+targetTechnology: "quarkus"
+effort: 5
+steps:
+  - id: replace-springbootapplication-annotation
+    action: replace
+    search: "@SpringBootApplication"
+    replace: "@QuarkusMain"
+    message: "Replace @SpringBootApplication with @QuarkusMain."
+    automatic: true
+  - id: replace-imports
+    action: replace
+    search: "import org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;"
+    replace: "import io.quarkus.runtime.Quarkus;\nimport io.quarkus.runtime.annotations.QuarkusMain;"
+    message: "Replace Spring Boot imports with Quarkus imports."
+    automatic: true
+  - id: replace-main-method
+    action: replace
+    search: "SpringApplication.run(PetClinicApplication.class, args);"
+    replace: "Quarkus.run(args);"
+    message: "Replace Spring Boot main method with Quarkus main method."
+    automatic: true
