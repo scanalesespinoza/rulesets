@@ -1,0 +1,25 @@
+- category: mandatory
+  customVariables: []
+  description: 'Replace @SpringBootApplication with Quarkus annotations.'
+  effort: 1
+  labels:
+  - konveyor.io/source=java-ee
+  - konveyor.io/source=jakarta-ee
+  - konveyor.io/source=springboot
+  - konveyor.io/target=quarkus
+  links:
+  - title: Quarkus CDI reference
+    url: https://quarkus.io/guides/cdi-reference
+  message: Replace `@SpringBootApplication` with `@QuarkusMain`
+  ruleID: springboot-to-quarkus-00000
+  when:
+    or:
+    - java.referenced:
+        location: ANNOTATION
+        pattern: org.springframework.boot.SpringApplication
+    - java.referenced:
+        location: ANNOTATION
+        pattern: org.springframework.boot.autoconfigure.SpringBootApplication
+    - java.referenced:
+        location: ANNOTATION
+        pattern: org.springframework.context.annotation.ImportRuntimeHints
