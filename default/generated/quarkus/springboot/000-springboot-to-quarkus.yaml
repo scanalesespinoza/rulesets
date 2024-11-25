@@ -3,8 +3,6 @@
   description: 'Replace @SpringBootApplication with Quarkus annotations.'
   effort: 1
   labels:
-  - konveyor.io/source=java-ee
-  - konveyor.io/source=jakarta-ee
   - konveyor.io/source=springboot
   - konveyor.io/target=quarkus
   links:
@@ -15,11 +13,17 @@
   when:
     or:
     - java.referenced:
-        location: ANNOTATION
+        location: FIELD
         pattern: org.springframework.boot.SpringApplication
+        annotated:
+          pattern: javax.inject.Inject
     - java.referenced:
-        location: ANNOTATION
+        location: FIELD
         pattern: org.springframework.boot.autoconfigure.SpringBootApplication
+        annotated:
+          pattern: javax.inject.Inject
     - java.referenced:
-        location: ANNOTATION
+        location: FIELD
         pattern: org.springframework.context.annotation.ImportRuntimeHints
+        annotated:
+          pattern: javax.inject.Inject

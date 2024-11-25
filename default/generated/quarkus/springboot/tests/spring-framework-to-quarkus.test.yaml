@@ -1,0 +1,12 @@
+rulesPath: ../000-springboot-to-quarkus.yaml
+providers:
+- name: springboot
+  dataPath: ./data/baseline
+tests:
+- ruleID: springboot-to-quarkus-00000
+  testCases:
+  - name: tc-1
+    analysisParams:
+      mode: "source-only"
+    hasIncidents:
+      exactly: 2
